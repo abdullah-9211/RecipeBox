@@ -32,10 +32,21 @@ class _RecipePageState extends State<RecipePage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              Text(
+                "by Tasty",
+                style: TextStyle(
+                  color: textColor,
+                  fontFamily: bodyFont,
+                  fontSize: bodyFontSize,
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
               const Text(
                 'Ingredients',
                 style: subHeadingStyle,

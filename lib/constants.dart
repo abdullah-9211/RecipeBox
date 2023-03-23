@@ -4,11 +4,14 @@ const String headingFont = 'OldStandardTT';
 const String bodyFont = 'Enriqueta';
 
 const Color textColor = Colors.black;
+const Color mainColor = Color(0xFFFA8D22);
 
 const double headingPadding = 20.0;
 
 const double mainHeadingSize = 35.0;
 const double subHeadingSize = 25.0;
+const double bodyFontSize = 16.0;
+
 
 const TextStyle subHeadingStyle = TextStyle(
   fontFamily: headingFont,
@@ -19,7 +22,7 @@ const TextStyle subHeadingStyle = TextStyle(
 const TextStyle bodyStyle = TextStyle(
     fontFamily: bodyFont,
     color: Colors.black,
-    fontSize: 15.0);
+    fontSize: bodyFontSize);
 
 const TextStyle mainHeadingStyle = TextStyle(
   color: textColor,
