@@ -79,8 +79,44 @@ class _RecipePageState extends State<RecipePage> {
                   ),
                 ),
               ]),
+              SizedBox(height: 15.0,),
+              Container(
+                margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                child: Row(
+                  children: [
+                    SizedBox(width: 25.0,),
+                    IconButton(
+                        onPressed: () {},
+                        iconSize: 35,
+                        color: mainColor,
+                        icon: Icon(Icons.heart_broken_sharp)),
+                    SizedBox(width: 10.0,),
+                    Container(
+                      margin: EdgeInsets.only(left: 20),
+                      child: IconButton(
+                          onPressed: () {},
+                          iconSize: 35,
+                          color: mainColor,
+                          icon: Icon(Icons.archive)),
+                    ),
+                    SizedBox(width: 10.0,),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      child: IconButton(onPressed: () {},
+                          color: mainColor,
+                          iconSize: 35,
+                          icon: Icon(Icons.share)),
+                    ),
+                    SizedBox(width: 10.0,),
+                    IconButton(onPressed: () {},
+                        iconSize: 35,
+                        color: mainColor,
+                        icon: Icon(Icons.check_box_outlined)),
+                  ],
+                ),
+              ),
               SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
               const Text(
                 'Ingredients',
