@@ -12,9 +12,21 @@ class _RecipePageState extends State<RecipePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text("Pancakes"),
-        centerTitle: true,
+        title: Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: const Text(
+            "Pancakes",
+            style: TextStyle(
+                color: Colors.amber,
+                fontFamily: 'OldStandardTT',
+                fontSize: 35.0
+            ),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+      ),
+      body: Container(
       ),
     );
   }
