@@ -83,31 +83,31 @@ class _RecipePageState extends State<RecipePage> {
               Container(
                 margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(width: 25.0,),
                     IconButton(
                         onPressed: () {},
                         iconSize: 35,
                         color: mainColor,
                         icon: Icon(Icons.heart_broken_sharp)),
-                    SizedBox(width: 10.0,),
+
                     Container(
-                      margin: EdgeInsets.only(left: 20),
+                      margin: EdgeInsets.only(left: 30),
                       child: IconButton(
                           onPressed: () {},
                           iconSize: 35,
                           color: mainColor,
                           icon: Icon(Icons.archive)),
                     ),
-                    SizedBox(width: 10.0,),
+
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      margin: EdgeInsets.symmetric(horizontal: 30),
                       child: IconButton(onPressed: () {},
                           color: mainColor,
                           iconSize: 35,
                           icon: Icon(Icons.share)),
                     ),
-                    SizedBox(width: 10.0,),
+
                     IconButton(onPressed: () {},
                         iconSize: 35,
                         color: mainColor,
