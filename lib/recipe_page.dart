@@ -7,11 +7,12 @@ class RecipePage extends StatefulWidget {
   final List<String> ingredients;
   final String recipeName;
   final List<String> steps;
+  final String byWho;
 
   @override
   State<RecipePage> createState() => _RecipePageState();
 
-  RecipePage(this.ingredients, this.recipeName, this.steps);
+  RecipePage(this.ingredients, this.recipeName, this.steps, this.byWho);
 }
 
 class _RecipePageState extends State<RecipePage> {
@@ -31,6 +32,20 @@ class _RecipePageState extends State<RecipePage> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 16.0, 10.0, 0.0),
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Icon(Icons.close, color: Colors.black),
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                backgroundColor: mainColor,
+                elevation: 0.0,
+              ),
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -41,12 +56,8 @@ class _RecipePageState extends State<RecipePage> {
               Row(children: [
                 Container(
                   child: Text(
-                    "by Tasty",
-                    style: TextStyle(
-                      color: textColor,
-                      fontFamily: bodyFont,
-                      fontSize: bodyFontSize,
-                    ),
+                    "by " + widget.byWho,
+                    style: bodyStyle,
                   ),
                 ),
                 Container(

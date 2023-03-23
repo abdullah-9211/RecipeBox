@@ -1,9 +1,10 @@
 class Recipe{
  String _name;
+ String _bywho;
  List<String> _ingredients;
  List<String> _steps;
 
- Recipe(this._name, this._ingredients, this._steps);
+ Recipe(this._name, this._bywho, this._ingredients, this._steps);
 
  String get name => _name;
 
@@ -21,5 +22,11 @@ class Recipe{
 
   set ingredients(List<String> value) {
     _ingredients = value;
+  }
+
+ String get bywho => _bywho;
+
+  set bywho(String value) {
+    _bywho = value;
   }
 }
