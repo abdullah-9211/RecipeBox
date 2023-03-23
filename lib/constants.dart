@@ -16,6 +16,11 @@ const TextStyle subHeadingStyle = TextStyle(
   fontSize: subHeadingSize,
 );
 
+const TextStyle bodyStyle = TextStyle(
+    fontFamily: bodyFont,
+    color: Colors.black,
+    fontSize: 15.0);
+
 const TextStyle mainHeadingStyle = TextStyle(
   color: textColor,
   fontFamily: headingFont,
