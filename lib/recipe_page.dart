@@ -18,7 +18,6 @@ class _RecipePageState extends State<RecipePage> {
   bool _showAllIngredients = false;
   bool _showAllSteps = false;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,39 +38,36 @@ class _RecipePageState extends State<RecipePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Row(
-                  children: [
-                    Container(
-                      child: Text(
-                        "by Tasty",
-                        style: TextStyle(
-                          color: textColor,
-                          fontFamily: bodyFont,
-                          fontSize: bodyFontSize,
-
-                        ),
-                      ),
+              Row(children: [
+                Container(
+                  child: Text(
+                    "by Tasty",
+                    style: TextStyle(
+                      color: textColor,
+                      fontFamily: bodyFont,
+                      fontSize: bodyFontSize,
                     ),
-                    Container(
-                      child: RatingBar.builder(
-                        initialRating: 3,
-                        minRating: 1,
-                        itemSize: 23.0,
-                        direction: Axis.horizontal,
-                        allowHalfRating: true,
-                        itemCount: 5,
-                        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                        itemBuilder: (context, _) => Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                        ),
-                        onRatingUpdate: (rating) {
-                          print(rating);
-                        },
-                      ),
+                  ),
+                ),
+                Container(
+                  child: RatingBar.builder(
+                    initialRating: 3,
+                    minRating: 1,
+                    itemSize: 23.0,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => Icon(
+                      Icons.star,
+                      color: Colors.amber,
                     ),
-                  ]
-              ),
+                    onRatingUpdate: (rating) {
+                      print(rating);
+                    },
+                  ),
+                ),
+              ]),
               SizedBox(
                 height: 20.0,
               ),
@@ -123,10 +119,10 @@ class _RecipePageState extends State<RecipePage> {
                       .take(_showAllSteps ? widget.steps.length : 3)
                       .map(
                         (step) => Text(
-                      '\u2022 $step',
-                      style: bodyStyle,
-                    ),
-                  ),
+                          '\u2022 $step',
+                          style: bodyStyle,
+                        ),
+                      ),
                   if (!_showAllSteps)
                     TextButton(
                       onPressed: () {
@@ -143,6 +139,15 @@ class _RecipePageState extends State<RecipePage> {
                       ),
                     ),
                 ],
+              ),
+              SizedBox(
+                height: 40.0,
+              ),
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Image.asset('images/pancakes.jpg'),
+                ),
               ),
             ],
           ),
