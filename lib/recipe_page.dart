@@ -109,7 +109,7 @@ class _RecipePageState extends State<RecipePage> {
                               onPressed: () {},
                               iconSize: 30,
                               color: Color(0xCC000000),
-                              icon: Icon(Icons.heart_broken_sharp)),
+                              icon: Icon(Icons.favorite)),
 
                           Container(
                             margin: EdgeInsets.only(left: 15),
@@ -169,16 +169,30 @@ class _RecipePageState extends State<RecipePage> {
                         endIndent: 40,
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             ...widget.ingredients
                                 .take(_showAllIngredients ? widget.ingredients.length : 0)
                                 .map(
-                                  (ingredient) => Text(
-                                '\u2022 $ingredient',
-                                style: bodyStyle,
+                                  (ingredient) => Padding(
+                                padding: EdgeInsets.symmetric(vertical: 4),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 4, right: 8),
+                                      child: Icon(Icons.double_arrow, size: 20),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        ingredient,
+                                        style: bodyStyle,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             if (!_showAllIngredients)
@@ -225,9 +239,23 @@ class _RecipePageState extends State<RecipePage> {
                             ...widget.steps
                                 .take(_showAllSteps ? widget.steps.length : 0)
                                 .map(
-                                  (step) => Text(
-                                '\u2022 $step',
-                                style: bodyStyle,
+                                  (step) => Padding(
+                                padding: EdgeInsets.symmetric(vertical: 4),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 4, right: 8),
+                                      child: Icon(Icons.double_arrow, size: 20),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        step,
+                                        style: bodyStyle,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             if (!_showAllSteps)
