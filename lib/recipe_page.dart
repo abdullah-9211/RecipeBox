@@ -152,7 +152,7 @@ class _RecipePageState extends State<RecipePage> {
                   ),
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
@@ -164,7 +164,7 @@ class _RecipePageState extends State<RecipePage> {
                     Container(
                       margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           ...widget.ingredients
                               .take(_showAllIngredients ? widget.ingredients.length : 0)
@@ -193,13 +193,11 @@ class _RecipePageState extends State<RecipePage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10.0),
-
                     SizedBox(
-                      height: 20.0,
+                      height: 10.0,
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
+                      margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                       child: const Text(
                         'Instructions',
                         style: subHeadingStyle,
@@ -207,9 +205,9 @@ class _RecipePageState extends State<RecipePage> {
                     ),
                     SizedBox(height: 10.0),
                     Container(
-                      margin: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
+                      margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           ...widget.steps
                               .take(_showAllSteps ? widget.steps.length : 0)
