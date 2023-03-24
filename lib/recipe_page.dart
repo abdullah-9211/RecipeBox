@@ -92,7 +92,7 @@ class _RecipePageState extends State<RecipePage> {
                           ),
                         ]),
                     Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       alignment: Alignment.topCenter,
                       margin: EdgeInsets.only(top: 15),
                       child: ClipRRect(
@@ -139,106 +139,119 @@ class _RecipePageState extends State<RecipePage> {
                 ),
               ),
             ),
-            SizedBox(
-              height:MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: Color(0x55808080),
-                    width: 1,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: Color(0x55808080),
+                      width: 1,
+                    ),
                   ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
-                      child: const Text(
-                        'Ingredients',
-                        style: subHeadingStyle,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                        child: const Text(
+                          'Ingredients',
+                          style: subHeadingStyle,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          ...widget.ingredients
-                              .take(_showAllIngredients ? widget.ingredients.length : 0)
-                              .map(
-                                (ingredient) => Text(
-                              '\u2022 $ingredient',
-                              style: bodyStyle,
-                            ),
-                          ),
-                          if (!_showAllIngredients)
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _showAllIngredients = true;
-                                });
-                              }, icon: Icon(Icons.add),
-                            ),
-                          if (_showAllIngredients)
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _showAllIngredients = false;
-                                });
-                              }, icon: Icon(Icons.remove),
-                            ),
-                        ],
+                      Divider(
+                        color: Colors.grey,
+                        height: 15,
+                        indent: 40,
+                        endIndent: 40,
                       ),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
-                      child: const Text(
-                        'Instructions',
-                        style: subHeadingStyle,
+                      Container(
+                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            ...widget.ingredients
+                                .take(_showAllIngredients ? widget.ingredients.length : 0)
+                                .map(
+                                  (ingredient) => Text(
+                                '\u2022 $ingredient',
+                                style: bodyStyle,
+                              ),
+                            ),
+                            if (!_showAllIngredients)
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _showAllIngredients = true;
+                                  });
+                                }, icon: Icon(Icons.add),
+                              ),
+                            if (_showAllIngredients)
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _showAllIngredients = false;
+                                  });
+                                }, icon: Icon(Icons.remove),
+                              ),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10.0),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          ...widget.steps
-                              .take(_showAllSteps ? widget.steps.length : 0)
-                              .map(
-                                (step) => Text(
-                              '\u2022 $step',
-                              style: bodyStyle,
-                            ),
-                          ),
-                          if (!_showAllSteps)
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _showAllSteps = true;
-                                });
-                              }, icon: Icon(Icons.add),
-                            ),
-                          if (_showAllSteps)
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _showAllSteps = false;
-                                });
-                              }, icon: Icon(Icons.remove),
-                            ),
-                        ],
+                      SizedBox(
+                        height: 10.0,
                       ),
-                    ),
-                    SizedBox(height: 10.0),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                        child: const Text(
+                          'Instructions',
+                          style: subHeadingStyle,
+                        ),
+                      ),
+                      Divider(
+                        color: Colors.grey,
+                        height: 15,
+                        indent: 40,
+                        endIndent: 40,
+                      ),
+                      SizedBox(height: 10.0),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            ...widget.steps
+                                .take(_showAllSteps ? widget.steps.length : 0)
+                                .map(
+                                  (step) => Text(
+                                '\u2022 $step',
+                                style: bodyStyle,
+                              ),
+                            ),
+                            if (!_showAllSteps)
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _showAllSteps = true;
+                                  });
+                                }, icon: Icon(Icons.add),
+                              ),
+                            if (_showAllSteps)
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _showAllSteps = false;
+                                  });
+                                }, icon: Icon(Icons.remove),
+                              ),
+                          ],
+                        ),
+                      ),
 
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
