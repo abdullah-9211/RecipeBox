@@ -22,6 +22,7 @@ class _RecipePageState extends State<RecipePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFFEDCD),
       appBar: AppBar(
         title: Padding(
           padding: EdgeInsets.only(top: headingPadding),
@@ -30,7 +31,8 @@ class _RecipePageState extends State<RecipePage> {
             style: mainHeadingStyle,
           ),
         ),
-        backgroundColor: Colors.transparent,
+
+        backgroundColor: Color(0xFFFFEDCD),
         elevation: 0.0,
         actions: [
           Padding(
@@ -48,156 +50,206 @@ class _RecipePageState extends State<RecipePage> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(children: [
-                Container(
-                  child: Text(
-                    "by " + widget.byWho,
-                    style: bodyStyle,
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+
+            Container(
+              child: DecoratedBox(
+
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color(0xFFFFEDCD),
                 ),
-                Container(
-                  child: RatingBar.builder(
-                    initialRating: 3,
-                    minRating: 1,
-                    itemSize: 23.0,
-                    direction: Axis.horizontal,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                    itemBuilder: (context, _) => Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                    onRatingUpdate: (rating) {
-                      print(rating);
-                    },
-                  ),
-                ),
-              ]),
-              SizedBox(height: 15.0,),
-              Container(
-                margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: Column(
                   children: [
-                    IconButton(
-                        onPressed: () {},
-                        iconSize: 35,
-                        color: mainColor,
-                        icon: Icon(Icons.heart_broken_sharp)),
-
+                    Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
+                            child: Text(
+                              "by " + widget.byWho,
+                              style: bodyStyle,
+                            ),
+                          ),
+                          Container(
+                            child: RatingBar.builder(
+                              initialRating: 3,
+                              minRating: 1,
+                              itemSize: 23.0,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                              itemBuilder: (context, _) => Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating) {
+                                print(rating);
+                              },
+                            ),
+                          ),
+                        ]),
                     Container(
-                      margin: EdgeInsets.only(left: 30),
-                      child: IconButton(
-                          onPressed: () {},
-                          iconSize: 35,
-                          color: mainColor,
-                          icon: Icon(Icons.archive)),
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      alignment: Alignment.topCenter,
+                      margin: EdgeInsets.only(top: 15),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image.asset('images/pancakes.jpg'),
+                      ),
                     ),
-
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 30),
-                      child: IconButton(onPressed: () {},
-                          color: mainColor,
-                          iconSize: 35,
-                          icon: Icon(Icons.share)),
-                    ),
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                              onPressed: () {},
+                              iconSize: 30,
+                              color: Color(0xCC000000),
+                              icon: Icon(Icons.heart_broken_sharp)),
 
-                    IconButton(onPressed: () {},
-                        iconSize: 35,
-                        color: mainColor,
-                        icon: Icon(Icons.check_box_outlined)),
+                          Container(
+                            margin: EdgeInsets.only(left: 15),
+                            child: IconButton(
+                                onPressed: () {},
+                                iconSize: 30,
+                                color: Color(0xCC000000),
+                                icon: Icon(Icons.archive)),
+                          ),
+
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 15),
+                            child: IconButton(onPressed: () {},
+                                color: Color(0xCC000000),
+                                iconSize: 30,
+                                icon: Icon(Icons.share)),
+                          ),
+
+                          IconButton(onPressed: () {},
+                              iconSize: 30,
+                              color: Color(0xCC000000),
+                              icon: Icon(Icons.check_box_outlined)),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 10.0,
-              ),
-              const Text(
-                'Ingredients',
-                style: subHeadingStyle,
-              ),
-              SizedBox(height: 10.0),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ...widget.ingredients
-                      .take(_showAllIngredients ? widget.ingredients.length : 3)
-                      .map(
-                        (ingredient) => Text(
-                          '\u2022 $ingredient',
-                          style: bodyStyle,
-                        ),
-                      ),
-                  if (!_showAllIngredients)
-                    TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _showAllIngredients = true;
-                        });
-                      },
+            ),
+            SizedBox(
+              height:MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: Color(0x55808080),
+                    width: 1,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                       child: const Text(
-                        'See more...',
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.0),
+                        'Ingredients',
+                        style: subHeadingStyle,
                       ),
                     ),
-                ],
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              const Text(
-                'Instructions',
-                style: subHeadingStyle,
-              ),
-              SizedBox(height: 10.0),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ...widget.steps
-                      .take(_showAllSteps ? widget.steps.length : 3)
-                      .map(
-                        (step) => Text(
-                          '\u2022 $step',
-                          style: bodyStyle,
-                        ),
-                      ),
-                  if (!_showAllSteps)
-                    TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _showAllSteps = true;
-                        });
-                      },
-                      child: const Text(
-                        'See more...',
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.0),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ...widget.ingredients
+                              .take(_showAllIngredients ? widget.ingredients.length : 0)
+                              .map(
+                                (ingredient) => Text(
+                              '\u2022 $ingredient',
+                              style: bodyStyle,
+                            ),
+                          ),
+                          if (!_showAllIngredients)
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _showAllIngredients = true;
+                                });
+                              }, icon: Icon(Icons.add),
+                            ),
+                          if (_showAllIngredients)
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _showAllIngredients = false;
+                                });
+                              }, icon: Icon(Icons.remove),
+                            ),
+                        ],
                       ),
                     ),
-                ],
-              ),
-              SizedBox(
-                height: 40.0,
-              ),
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15.0),
-                  child: Image.asset('images/pancakes.jpg'),
+                    SizedBox(height: 10.0),
+
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
+                      child: const Text(
+                        'Instructions',
+                        style: subHeadingStyle,
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ...widget.steps
+                              .take(_showAllSteps ? widget.steps.length : 0)
+                              .map(
+                                (step) => Text(
+                              '\u2022 $step',
+                              style: bodyStyle,
+                            ),
+                          ),
+                          if (!_showAllSteps)
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _showAllSteps = true;
+                                });
+                              }, icon: Icon(Icons.add),
+                            ),
+                          if (_showAllSteps)
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _showAllSteps = false;
+                                });
+                              }, icon: Icon(Icons.remove),
+                            ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+
+
+            SizedBox(
+              height: 40.0,
+            ),
+          ],
         ),
       ),
     );
