@@ -12,7 +12,6 @@ const double mainHeadingSize = 35.0;
 const double subHeadingSize = 25.0;
 const double bodyFontSize = 16.0;
 
-
 const TextStyle subHeadingStyle = TextStyle(
   fontFamily: headingFont,
   color: textColor,
@@ -20,9 +19,7 @@ const TextStyle subHeadingStyle = TextStyle(
 );
 
 const TextStyle bodyStyle = TextStyle(
-    fontFamily: bodyFont,
-    color: Colors.black,
-    fontSize: bodyFontSize);
+    fontFamily: bodyFont, color: Colors.black, fontSize: bodyFontSize);
 
 const TextStyle mainHeadingStyle = TextStyle(
   color: textColor,

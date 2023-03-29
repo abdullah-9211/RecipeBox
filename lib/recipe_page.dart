@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipebox/recipe.dart';
 import 'constants.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'controller.dart';
 
 class RecipePage extends StatefulWidget {
   final Recipe recipe;
@@ -13,8 +14,8 @@ class RecipePage extends StatefulWidget {
 }
 
 class _RecipePageState extends State<RecipePage> {
-  bool _showAllIngredients = false;
-  bool _showAllSteps = false;
+  final bool _showAllIngredients = false;
+  final bool _showAllSteps = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,6 @@ class _RecipePageState extends State<RecipePage> {
             style: mainHeadingStyle,
           ),
         ),
-
         backgroundColor: const Color(0xFFFFEDCD),
         elevation: 0.0,
         actions: [
@@ -50,41 +50,38 @@ class _RecipePageState extends State<RecipePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-
             DecoratedBox(
-
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: const Color(0xFFFFEDCD),
               ),
               child: Column(
                 children: [
-                  Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
-                          child: Text(
-                            "by ${widget.recipe.bywho}",
-                            style: bodyStyle,
-                          ),
-                        ),
-                        RatingBar.builder(
-                          initialRating: 3,
-                          minRating: 1,
-                          itemSize: 23.0,
-                          direction: Axis.horizontal,
-                          allowHalfRating: true,
-                          itemCount: 5,
-                          itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                          itemBuilder: (context, _) => const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          onRatingUpdate: (rating) {
-                            //Update recipe rating in db
-                          },
-                        ),
-                      ]),
+                  Row(children: [
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
+                      child: Text(
+                        "by ${widget.recipe.bywho}",
+                        style: bodyStyle,
+                      ),
+                    ),
+                    RatingBar.builder(
+                      initialRating: 3,
+                      minRating: 1,
+                      itemSize: 23.0,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {
+                        //Update recipe rating in db
+                      },
+                    ),
+                  ]),
                   Container(
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                     alignment: Alignment.topCenter,
@@ -104,7 +101,6 @@ class _RecipePageState extends State<RecipePage> {
                             iconSize: 30,
                             color: const Color(0xCC000000),
                             icon: const Icon(Icons.favorite)),
-
                         Container(
                           margin: const EdgeInsets.only(left: 15),
                           child: IconButton(
@@ -113,16 +109,16 @@ class _RecipePageState extends State<RecipePage> {
                               color: const Color(0xCC000000),
                               icon: const Icon(Icons.archive)),
                         ),
-
                         Container(
                           margin: const EdgeInsets.symmetric(horizontal: 15),
-                          child: IconButton(onPressed: () {},
+                          child: IconButton(
+                              onPressed: () {},
                               color: const Color(0xCC000000),
                               iconSize: 30,
                               icon: const Icon(Icons.share)),
                         ),
-
-                        IconButton(onPressed: () {},
+                        IconButton(
+                            onPressed: () {},
                             iconSize: 30,
                             color: const Color(0xCC000000),
                             icon: const Icon(Icons.check_box_outlined)),
@@ -149,7 +145,8 @@ class _RecipePageState extends State<RecipePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                        margin:
+                            const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                         child: const Text(
                           'Ingredients',
                           style: subHeadingStyle,
@@ -161,57 +158,15 @@ class _RecipePageState extends State<RecipePage> {
                         indent: 40,
                         endIndent: 40,
                       ),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            ...widget.recipe.ingredients
-                                .take(_showAllIngredients ? widget.recipe.ingredients.length : 0)
-                                .map(
-                                  (ingredient) => Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 4),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(top: 4, right: 8),
-                                      child: Icon(Icons.double_arrow, size: 20),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        ingredient,
-                                        style: bodyStyle,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            if (!_showAllIngredients)
-                              IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _showAllIngredients = true;
-                                  });
-                                }, icon: const Icon(Icons.add),
-                              ),
-                            if (_showAllIngredients)
-                              IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _showAllIngredients = false;
-                                  });
-                                }, icon: const Icon(Icons.remove),
-                              ),
-                          ],
-                        ),
-                      ),
+                      ExpandableList(
+                          listOfItems: widget.recipe.ingredients,
+                          show: _showAllIngredients),
                       const SizedBox(
                         height: 10.0,
                       ),
                       Container(
-                        margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                        margin:
+                            const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                         child: const Text(
                           'Instructions',
                           style: subHeadingStyle,
@@ -224,60 +179,14 @@ class _RecipePageState extends State<RecipePage> {
                         endIndent: 40,
                       ),
                       const SizedBox(height: 10.0),
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            ...widget.recipe.steps
-                                .take(_showAllSteps ? widget.recipe.steps.length : 0)
-                                .map(
-                                  (step) => Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 4),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(top: 4, right: 8),
-                                      child: Icon(Icons.double_arrow, size: 20),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        step,
-                                        style: bodyStyle,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            if (!_showAllSteps)
-                              IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _showAllSteps = true;
-                                  });
-                                }, icon: const Icon(Icons.add),
-                              ),
-                            if (_showAllSteps)
-                              IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _showAllSteps = false;
-                                  });
-                                }, icon: const Icon(Icons.remove),
-                              ),
-                          ],
-                        ),
-                      ),
-
+                      ExpandableList(
+                          listOfItems: widget.recipe.steps,
+                          show: _showAllSteps),
                     ],
                   ),
                 ),
               ),
             ),
-
-
             const SizedBox(
               height: 40.0,
             ),

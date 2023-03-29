@@ -12,7 +12,6 @@ class RecipeBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       home: RecipePage(recipeBank.getRecipe(0)),
     );
   }
