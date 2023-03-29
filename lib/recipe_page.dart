@@ -81,6 +81,7 @@ class _RecipePageState extends State<RecipePage> {
                             color: Colors.amber,
                           ),
                           onRatingUpdate: (rating) {
+                            //Update recipe rating in db
                           },
                         ),
                       ]),
