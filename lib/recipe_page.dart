@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:recipebox/recipe.dart';
 import 'constants.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class RecipePage extends StatefulWidget {
-  final List<String> ingredients;
-  final String recipeName;
-  final List<String> steps;
-  final String byWho;
+  final Recipe recipe;
 
   @override
   State<RecipePage> createState() => _RecipePageState();
 
-  const RecipePage(this.ingredients, this.recipeName, this.steps, this.byWho, {super.key});
+  const RecipePage(this.recipe, {super.key});
 }
 
 class _RecipePageState extends State<RecipePage> {
@@ -26,7 +24,7 @@ class _RecipePageState extends State<RecipePage> {
         title: Padding(
           padding: const EdgeInsets.only(top: headingPadding),
           child: Text(
-            widget.recipeName,
+            widget.recipe.name,
             style: mainHeadingStyle,
           ),
         ),
@@ -66,7 +64,7 @@ class _RecipePageState extends State<RecipePage> {
                         Container(
                           margin: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
                           child: Text(
-                            "by ${widget.byWho}",
+                            "by ${widget.recipe.bywho}",
                             style: bodyStyle,
                           ),
                         ),
@@ -167,8 +165,8 @@ class _RecipePageState extends State<RecipePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            ...widget.ingredients
-                                .take(_showAllIngredients ? widget.ingredients.length : 0)
+                            ...widget.recipe.ingredients
+                                .take(_showAllIngredients ? widget.recipe.ingredients.length : 0)
                                 .map(
                                   (ingredient) => Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 4),
@@ -230,8 +228,8 @@ class _RecipePageState extends State<RecipePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            ...widget.steps
-                                .take(_showAllSteps ? widget.steps.length : 0)
+                            ...widget.recipe.steps
+                                .take(_showAllSteps ? widget.recipe.steps.length : 0)
                                 .map(
                                   (step) => Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 4),

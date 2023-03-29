@@ -16,7 +16,7 @@ class RecipeBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
 
-      home: RecipePage(recipe.ingredients, recipe.name, recipe.steps, recipe.bywho),
+      home: RecipePage(recipe),
     );
   }
 }
