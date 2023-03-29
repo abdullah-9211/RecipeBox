@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'constants.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -12,7 +11,7 @@ class RecipePage extends StatefulWidget {
   @override
   State<RecipePage> createState() => _RecipePageState();
 
-  RecipePage(this.ingredients, this.recipeName, this.steps, this.byWho);
+  const RecipePage(this.ingredients, this.recipeName, this.steps, this.byWho, {super.key});
 }
 
 class _RecipePageState extends State<RecipePage> {
@@ -22,29 +21,29 @@ class _RecipePageState extends State<RecipePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFEDCD),
+      backgroundColor: const Color(0xFFFFEDCD),
       appBar: AppBar(
         title: Padding(
-          padding: EdgeInsets.only(top: headingPadding),
+          padding: const EdgeInsets.only(top: headingPadding),
           child: Text(
             widget.recipeName,
             style: mainHeadingStyle,
           ),
         ),
 
-        backgroundColor: Color(0xFFFFEDCD),
+        backgroundColor: const Color(0xFFFFEDCD),
         elevation: 0.0,
         actions: [
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 16.0, 10.0, 0.0),
             child: ElevatedButton(
               onPressed: () {},
-              child: Icon(Icons.close, color: Colors.black),
               style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
+                shape: const CircleBorder(),
                 backgroundColor: mainColor,
                 elevation: 0.0,
               ),
+              child: const Icon(Icons.close, color: Colors.black),
             ),
           ),
         ],
@@ -54,93 +53,88 @@ class _RecipePageState extends State<RecipePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
 
-            Container(
-              child: DecoratedBox(
+            DecoratedBox(
 
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xFFFFEDCD),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
-                            child: Text(
-                              "by " + widget.byWho,
-                              style: bodyStyle,
-                            ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: const Color(0xFFFFEDCD),
+              ),
+              child: Column(
+                children: [
+                  Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0.0),
+                          child: Text(
+                            "by ${widget.byWho}",
+                            style: bodyStyle,
                           ),
-                          Container(
-                            child: RatingBar.builder(
-                              initialRating: 3,
-                              minRating: 1,
-                              itemSize: 23.0,
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,
-                              itemCount: 5,
-                              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                              itemBuilder: (context, _) => Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                              ),
-                              onRatingUpdate: (rating) {
-                                print(rating);
-                              },
-                            ),
+                        ),
+                        RatingBar.builder(
+                          initialRating: 3,
+                          minRating: 1,
+                          itemSize: 23.0,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          itemBuilder: (context, _) => const Icon(
+                            Icons.star,
+                            color: Colors.amber,
                           ),
-                        ]),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      alignment: Alignment.topCenter,
-                      margin: EdgeInsets.only(top: 15),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15.0),
-                        child: Image.asset('images/pancakes.jpg'),
-                      ),
+                          onRatingUpdate: (rating) {
+                          },
+                        ),
+                      ]),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    alignment: Alignment.topCenter,
+                    margin: const EdgeInsets.only(top: 15),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: Image.asset('images/pancakes.jpg'),
                     ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            iconSize: 30,
+                            color: const Color(0xCC000000),
+                            icon: const Icon(Icons.favorite)),
+
+                        Container(
+                          margin: const EdgeInsets.only(left: 15),
+                          child: IconButton(
                               onPressed: () {},
                               iconSize: 30,
-                              color: Color(0xCC000000),
-                              icon: Icon(Icons.favorite)),
+                              color: const Color(0xCC000000),
+                              icon: const Icon(Icons.archive)),
+                        ),
 
-                          Container(
-                            margin: EdgeInsets.only(left: 15),
-                            child: IconButton(
-                                onPressed: () {},
-                                iconSize: 30,
-                                color: Color(0xCC000000),
-                                icon: Icon(Icons.archive)),
-                          ),
-
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 15),
-                            child: IconButton(onPressed: () {},
-                                color: Color(0xCC000000),
-                                iconSize: 30,
-                                icon: Icon(Icons.share)),
-                          ),
-
-                          IconButton(onPressed: () {},
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 15),
+                          child: IconButton(onPressed: () {},
+                              color: const Color(0xCC000000),
                               iconSize: 30,
-                              color: Color(0xCC000000),
-                              icon: Icon(Icons.check_box_outlined)),
-                        ],
-                      ),
+                              icon: const Icon(Icons.share)),
+                        ),
+
+                        IconButton(onPressed: () {},
+                            iconSize: 30,
+                            color: const Color(0xCC000000),
+                            icon: const Icon(Icons.check_box_outlined)),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: DecoratedBox(
@@ -148,7 +142,7 @@ class _RecipePageState extends State<RecipePage> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Color(0x55808080),
+                      color: const Color(0x55808080),
                       width: 1,
                     ),
                   ),
@@ -156,20 +150,20 @@ class _RecipePageState extends State<RecipePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                        margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                         child: const Text(
                           'Ingredients',
                           style: subHeadingStyle,
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         color: Colors.grey,
                         height: 15,
                         indent: 40,
                         endIndent: 40,
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
+                        margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
@@ -177,11 +171,11 @@ class _RecipePageState extends State<RecipePage> {
                                 .take(_showAllIngredients ? widget.ingredients.length : 0)
                                 .map(
                                   (ingredient) => Padding(
-                                padding: EdgeInsets.symmetric(vertical: 4),
+                                padding: const EdgeInsets.symmetric(vertical: 4),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Padding(
+                                    const Padding(
                                       padding: EdgeInsets.only(top: 4, right: 8),
                                       child: Icon(Icons.double_arrow, size: 20),
                                     ),
@@ -201,7 +195,7 @@ class _RecipePageState extends State<RecipePage> {
                                   setState(() {
                                     _showAllIngredients = true;
                                   });
-                                }, icon: Icon(Icons.add),
+                                }, icon: const Icon(Icons.add),
                               ),
                             if (_showAllIngredients)
                               IconButton(
@@ -209,30 +203,30 @@ class _RecipePageState extends State<RecipePage> {
                                   setState(() {
                                     _showAllIngredients = false;
                                   });
-                                }, icon: Icon(Icons.remove),
+                                }, icon: const Icon(Icons.remove),
                               ),
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10.0,
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                        margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                         child: const Text(
                           'Instructions',
                           style: subHeadingStyle,
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         color: Colors.grey,
                         height: 15,
                         indent: 40,
                         endIndent: 40,
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       Container(
-                        margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                        margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
@@ -240,11 +234,11 @@ class _RecipePageState extends State<RecipePage> {
                                 .take(_showAllSteps ? widget.steps.length : 0)
                                 .map(
                                   (step) => Padding(
-                                padding: EdgeInsets.symmetric(vertical: 4),
+                                padding: const EdgeInsets.symmetric(vertical: 4),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Padding(
+                                    const Padding(
                                       padding: EdgeInsets.only(top: 4, right: 8),
                                       child: Icon(Icons.double_arrow, size: 20),
                                     ),
@@ -264,7 +258,7 @@ class _RecipePageState extends State<RecipePage> {
                                   setState(() {
                                     _showAllSteps = true;
                                   });
-                                }, icon: Icon(Icons.add),
+                                }, icon: const Icon(Icons.add),
                               ),
                             if (_showAllSteps)
                               IconButton(
@@ -272,7 +266,7 @@ class _RecipePageState extends State<RecipePage> {
                                   setState(() {
                                     _showAllSteps = false;
                                   });
-                                }, icon: Icon(Icons.remove),
+                                }, icon: const Icon(Icons.remove),
                               ),
                           ],
                         ),
@@ -285,7 +279,7 @@ class _RecipePageState extends State<RecipePage> {
             ),
 
 
-            SizedBox(
+            const SizedBox(
               height: 40.0,
             ),
           ],

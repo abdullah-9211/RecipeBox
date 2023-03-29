@@ -7,7 +7,7 @@ List<String> steps = ['Put banana in blender', 'Pour in oats', 'Crack eggs and p
 Recipe recipe = Recipe('Sweet Pancakes', 'Tasty', ing, steps);
 
 
-void main() => runApp(RecipeBox());
+void main() => runApp(const RecipeBox());
 
 class RecipeBox extends StatelessWidget {
   const RecipeBox({Key? key}) : super(key: key);
