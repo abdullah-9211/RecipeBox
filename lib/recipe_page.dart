@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:recipebox/recipe.dart';
 import 'constants.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'expandableList.dart';
 import 'controller.dart';
+
+Controller controller = Controller();
 
 class RecipePage extends StatefulWidget {
   final Recipe recipe;
@@ -14,8 +17,7 @@ class RecipePage extends StatefulWidget {
 }
 
 class _RecipePageState extends State<RecipePage> {
-  final bool _showAllIngredients = false;
-  final bool _showAllSteps = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +162,7 @@ class _RecipePageState extends State<RecipePage> {
                       ),
                       ExpandableList(
                           listOfItems: widget.recipe.ingredients,
-                          show: _showAllIngredients),
+                          show: controller.showAllIngredients),
                       const SizedBox(
                         height: 10.0,
                       ),
@@ -181,7 +183,7 @@ class _RecipePageState extends State<RecipePage> {
                       const SizedBox(height: 10.0),
                       ExpandableList(
                           listOfItems: widget.recipe.steps,
-                          show: _showAllSteps),
+                          show: controller.showAllSteps),
                     ],
                   ),
                 ),
