@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "367477334703",
+    "project_id": "recipebox-ea02f",
+    "storage_bucket": "recipebox-ea02f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367477334703:android:4e5c4794ba936c2ec42a5a",
+        "android_client_info": {
+          "package_name": "com.example.recipebox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367477334703-ql1fmh1gerffcvaomo44akeoqoqe30iu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxcbL-93EsWmNq1waz5RiB3VWS2TzB8dY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367477334703-ql1fmh1gerffcvaomo44akeoqoqe30iu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
