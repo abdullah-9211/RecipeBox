@@ -8,7 +8,7 @@ const Color mainColor = Color(0xFFFA8D22);
 
 const double headingPadding = 20.0;
 
-const double mainHeadingSize = 35.0;
+const double mainHeadingSize = 30.0;
 const double subHeadingSize = 25.0;
 const double bodyFontSize = 16.0;
 

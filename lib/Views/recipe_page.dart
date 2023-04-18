@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:recipebox/Models/recipe.dart';
+import 'package:recipebox/Views/recipe_feedback.dart';
 
 import '../Controllers/recipe_page_controller.dart';
 import '../Resources/constants.dart';
@@ -23,6 +24,7 @@ class _RecipePageState extends State<RecipePage> {
     return Scaffold(
       backgroundColor: const Color(0xFFFFEDCD),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.only(top: headingPadding),
           child: Text(
@@ -36,7 +38,11 @@ class _RecipePageState extends State<RecipePage> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 16.0, 10.0, 0.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                }
+              },
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 backgroundColor: mainColor,
@@ -67,7 +73,7 @@ class _RecipePageState extends State<RecipePage> {
                       ),
                     ),
                     RatingBar.builder(
-                      initialRating: 3,
+                      initialRating: widget.recipe.recipeRating.ratingNum,
                       minRating: 1,
                       itemSize: 23.0,
                       direction: Axis.horizontal,
@@ -88,9 +94,10 @@ class _RecipePageState extends State<RecipePage> {
                     alignment: Alignment.topCenter,
                     margin: const EdgeInsets.only(top: 15),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
-                      child: Image.asset('images/pancakes.jpg'),
-                    ),
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image(
+                          image: widget.recipe.image,
+                        )),
                   ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -119,10 +126,18 @@ class _RecipePageState extends State<RecipePage> {
                               icon: const Icon(Icons.share)),
                         ),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      FeedbackPage(recipe: widget.recipe),
+                                ),
+                              );
+                            },
                             iconSize: 30,
                             color: const Color(0xCC000000),
-                            icon: const Icon(Icons.check_box_outlined)),
+                            icon: const Icon(Icons.star_rounded)),
                       ],
                     ),
                   ),
