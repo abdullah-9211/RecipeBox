@@ -7,13 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recipebox/Views/recipe_page.dart';
-import 'package:recipebox/main.dart';
+import 'package:recipebox/Views/login_page.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(RecipePage(recipeBank.getRecipe(0)));
+    await tester.pumpWidget(const LoginPage());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
