@@ -89,7 +89,7 @@ class _RecipePageState extends State<RecipePage> {
                     margin: const EdgeInsets.only(top: 15),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
-                      child: Image.asset('images/pancakes.jpg'),
+                      child: widget.recipe.image,
                     ),
                   ),
                   Container(

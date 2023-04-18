@@ -12,8 +12,8 @@ class RecipeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: RecipeResults(),
+    return MaterialApp(
+      home: RecipeResults('Pancakes'),
     );
   }
 }

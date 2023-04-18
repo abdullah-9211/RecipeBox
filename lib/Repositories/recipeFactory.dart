@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:recipebox/Models/Rating.dart';
+import 'package:recipebox/Resources/foodTypeEnum.dart';
 
 import '../Models/recipe.dart';
 
@@ -18,6 +20,8 @@ class RecipeBank {
         'Cook Mixture on low heat',
       ],
       Rating(3.5, "Excellent recipe."),
+      Image.asset('images/pancakes.jpg'),
+      FoodType.pancakes,
     ),
   ];
 

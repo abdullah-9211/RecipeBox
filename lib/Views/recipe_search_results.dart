@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:recipebox/Resources/dummydata.dart';
 
 class RecipeResults extends StatelessWidget {
-  final String recipePage = 'Pancakes';
+  String recipePageName;
 
-  const RecipeResults({Key? key}) : super(key: key);
+  RecipeResults(this.recipePageName, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class RecipeResults extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(20, 70, 10, 0),
               width: double.infinity,
               child: Text(
-                recipePage,
+                recipePageName,
                 style: const TextStyle(
                     fontSize: 27,
                     color: Colors.black,
