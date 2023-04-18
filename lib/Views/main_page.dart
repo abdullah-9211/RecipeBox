@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:recipebox/Repositories/foodTypesList.dart';
+import 'package:recipebox/Resources/card_content_main.dart';
 import 'package:recipebox/Resources/constants.dart';
 import 'package:recipebox/Views/recipe_search_results.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   MainPage(this.userName, {super.key});
 
   String userName;
+  List<CardContentMain> foodTypeList = cardContentMain;
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  late String query = "";
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +53,7 @@ class MainPage extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(20, 0, 10, 10),
               width: double.infinity,
               child: Text(
-                'Welcome $userName',
+                'Welcome ${widget.userName}',
                 style: const TextStyle(
                     fontSize: 25,
                     color: Colors.black,
@@ -71,6 +80,13 @@ class MainPage extends StatelessWidget {
                     color: Colors.black54,
                   ),
                 ),
+                onChanged: (value) {
+                  setState(() {
+                    if (filterList(value) != []) {
+                      widget.foodTypeList = filterList(value);
+                    }
+                  });
+                },
               ),
             ),
             const Divider(),
@@ -80,76 +96,77 @@ class MainPage extends StatelessWidget {
       ),
     );
   }
-}
 
-Widget buildRecipe() {
-  return GridView.builder(
-    shrinkWrap: true,
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 2,
-      childAspectRatio: 0.9,
-    ),
-    itemBuilder: _itemBuilder,
-    itemCount: cardContentMain.length,
-    physics: const NeverScrollableScrollPhysics(),
-  );
-}
-
-Widget _itemBuilder(BuildContext context, int index) {
-  return InkWell(
-    child: Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
+  Widget buildRecipe() {
+    return GridView.builder(
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 0.9,
       ),
-      child: Card(
-        margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
-        child: Container(
-          height: 80,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: cardContentMain[index].cardImage,
-              fit: BoxFit.cover,
-            ),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
+      itemBuilder: _itemBuilder,
+      itemCount: widget.foodTypeList.length,
+      physics: const NeverScrollableScrollPhysics(),
+    );
+  }
+
+  Widget _itemBuilder(BuildContext context, int index) {
+    return InkWell(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Card(
+          margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
           child: Container(
+            height: 80,
             width: double.infinity,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8.0),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: widget.foodTypeList[index].cardImage,
+                fit: BoxFit.cover,
               ),
-              color: Color(0x995A5A5A),
+              borderRadius: BorderRadius.circular(8.0),
             ),
-            padding: const EdgeInsets.fromLTRB(2.0, 78.0, 0.0, 0.0),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: cardContentMain[index].type,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      wordSpacing: 1.5,
-                    ),
-                  ),
-                  const TextSpan(text: '\n'),
-                ],
+            child: Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(8.0),
+                ),
+                color: Color(0x995A5A5A),
               ),
-              textAlign: TextAlign.center,
+              padding: const EdgeInsets.fromLTRB(2.0, 78.0, 0.0, 0.0),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: widget.foodTypeList[index].type,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        wordSpacing: 1.5,
+                      ),
+                    ),
+                    const TextSpan(text: '\n'),
+                  ],
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ),
       ),
-    ),
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RecipeResults(cardContentMain[index].type),
-        ),
-      );
-    },
-  );
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                RecipeResults(widget.foodTypeList[index].type),
+          ),
+        );
+      },
+    );
+  }
 }

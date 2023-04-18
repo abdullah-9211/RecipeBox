@@ -39,3 +39,15 @@ List<CardContentMain> cardContentMain = [
     const AssetImage('images/pizza.jpeg'),
   ),
 ];
+
+List<CardContentMain> filterList(String query) {
+  List<CardContentMain> filter = [];
+
+  for (CardContentMain c in cardContentMain) {
+    if ((c.type.toUpperCase()).contains(query.toUpperCase())) {
+      filter.add(c);
+    }
+  }
+
+  return filter;
+}
