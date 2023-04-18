@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:recipebox/recipe.dart';
-import 'constants.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'expandableList.dart';
-import 'controller.dart';
+import 'package:recipebox/Models/recipe.dart';
 
-Controller controller = Controller();
+import '../Controllers/recipe_page_controller.dart';
+import '../Resources/constants.dart';
+import '../Resources/expandableList.dart';
+
+RecipeController controller = RecipeController();
 
 class RecipePage extends StatefulWidget {
   final Recipe recipe;
@@ -17,8 +18,6 @@ class RecipePage extends StatefulWidget {
 }
 
 class _RecipePageState extends State<RecipePage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +89,7 @@ class _RecipePageState extends State<RecipePage> {
                     margin: const EdgeInsets.only(top: 15),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
-                      child: Image.asset('images/pancakes.jpg'),
+                      child: widget.recipe.image,
                     ),
                   ),
                   Container(
