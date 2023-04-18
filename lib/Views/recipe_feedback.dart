@@ -12,7 +12,7 @@ class FeedbackPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFFFEDCD),
       body: Center(
-          child: Container(
+          child: SizedBox(
               width: 370,
               height: 770,
               child: Column(
@@ -44,7 +44,7 @@ class FeedbackPage extends StatelessWidget {
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
                                         shape: const CircleBorder(),
-                                        backgroundColor: Color(0xFFE6B980),
+                                        backgroundColor: const Color(0xFFE6B980),
                                         elevation: 0.0,
                                       ),
                                       child: const Icon(Icons.close,

@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:recipebox/Models/Rating.dart';
 import 'package:recipebox/Resources/foodTypeEnum.dart';

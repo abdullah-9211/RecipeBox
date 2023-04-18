@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:recipebox/Views/login_page.dart';
 
 import 'Repositories/recipeFactory.dart';
-import 'Views/recipe_page.dart';
 
 RecipeBank recipeBank = RecipeBank();
 
@@ -12,11 +12,9 @@ class RecipeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RecipePage(
-        recipeBank.getRecipe(1),
-      ),
+      home: LoginPage(),
     );
   }
 }
