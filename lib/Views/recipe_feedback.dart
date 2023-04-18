@@ -86,88 +86,97 @@ class FeedbackPage extends StatelessWidget {
                     ),
                   ]),
               const Divider(),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.9,
-                height: 600,
-                decoration: BoxDecoration(
-                    color: const Color(0xFFFFEDCD),
-                    border: Border.all(color: Colors.black)),
-                margin: const EdgeInsets.only(top: 40.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("Leave a Review", style: subHeadingStyle),
-                        // share button
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            shape: const CircleBorder(),
-                            backgroundColor: const Color(0xFFE6B980),
-                            elevation: 0.0,
+                child: Card(
+                  color: const Color(0xFFFFEDCD),
+                  elevation: 15.0,
+
+                  // width: MediaQuery.of(context).size.width * 0.9,
+                  // height: 600,
+                  // decoration: BoxDecoration(
+                  //     color: const Color(0xFFFFEDCD),
+                  //     border: Border.all(color: Colors.black)),
+                  // margin: const EdgeInsets.only(top: 40.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Leave a Review", style: subHeadingStyle),
+                          // share button
+                          ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              shape: const CircleBorder(),
+                              backgroundColor: const Color(0xFFE6B980),
+                              elevation: 0.0,
+                            ),
+                            child: const Icon(Icons.share, color: Colors.black),
                           ),
-                          child: const Icon(Icons.share, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        RatingBar.builder(
-                          initialRating: 3,
-                          minRating: 1,
-                          itemSize: 30.0,
-                          direction: Axis.horizontal,
-                          allowHalfRating: true,
-                          itemCount: 5,
-                          itemBuilder: (context, _) => const Icon(
-                            Icons.star,
-                            color: Colors.amber,
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RatingBar.builder(
+                            initialRating: 3,
+                            minRating: 1,
+                            itemSize: 30.0,
+                            direction: Axis.horizontal,
+                            allowHalfRating: true,
+                            itemCount: 5,
+                            itemBuilder: (context, _) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            onRatingUpdate: (rating) {
+                              //Update recipe rating in db
+                              recipe.recipeRating.ratingNum = rating;
+                            },
                           ),
-                          onRatingUpdate: (rating) {
-                            //Update recipe rating in db
-                            recipe.recipeRating.ratingNum = rating;
-                          },
-                        ),
-                      ],
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 400,
-                      color: Colors.white,
-                      margin: const EdgeInsets.all(20),
-                      child: const TextField(
-                        maxLines: 20,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Review...',
-                          hintStyle: bodyStyle,
-                          contentPadding: EdgeInsets.all(12.0),
+                        ],
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 400,
+                        color: Colors.white,
+                        margin: const EdgeInsets.all(20),
+                        child: const TextField(
+                          maxLines: 20,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Review...',
+                            hintStyle: bodyStyle,
+                            contentPadding: EdgeInsets.all(12.0),
+                          ),
                         ),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          style: TextButton.styleFrom(
-                            backgroundColor: const Color(0xFFE6B980),
-                            fixedSize: const Size(150, 50),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
+                      Container(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              style: TextButton.styleFrom(
+                                backgroundColor: const Color(0xFFE6B980),
+                                fixedSize: const Size(150, 50),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0)),
+                                ),
+                              ),
+                              child: const Text("Submit", style: bodyStyle),
                             ),
-                          ),
-                          child: const Text("Submit", style: bodyStyle),
+                          ],
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
