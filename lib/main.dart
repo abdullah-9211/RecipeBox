@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipebox/recipe_search_results.dart';
-import 'recipe_page.dart';
-import 'recipeFactory.dart';
+import 'Repositories/recipeFactory.dart';
+import 'Views/recipe_page.dart';
 
 RecipeBank recipeBank = RecipeBank();
 
