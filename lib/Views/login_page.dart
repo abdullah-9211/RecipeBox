@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:recipebox/Repositories/userFactory.dart';
 import 'package:recipebox/Resources/constants.dart';
 import 'package:recipebox/Views/main_page.dart';
 import 'package:recipebox/Views/registration_page.dart';
 
-userBank UserBank = userBank();
+final userBank UserBank = GetIt.instance<userBank>();
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -96,7 +97,9 @@ class LoginPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const MainPage(),
+                                  builder: (context) => MainPage(
+                                    UserBank.getUsername(email),
+                                  ),
                                 ),
                               );
                             } else {
@@ -144,8 +147,7 @@ class LoginPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      const RegistrationPage()),
+                                  builder: (context) => RegistrationPage()),
                             );
                           },
                           child: const Text(

@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:recipebox/Repositories/userFactory.dart';
 import 'package:recipebox/Resources/constants.dart';
 import 'package:recipebox/Views/login_page.dart';
 
+final userBank UserBank = GetIt.instance<userBank>();
+
 class RegistrationPage extends StatelessWidget {
-  const RegistrationPage({Key? key}) : super(key: key);
+  RegistrationPage({Key? key}) : super(key: key);
+
+  late String username = "";
+  late String email = "";
+  late String pass = "";
+  late String confirm_pass = "";
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +69,9 @@ class RegistrationPage extends StatelessWidget {
                               borderSide: const BorderSide(color: Colors.red),
                             ),
                           ),
+                          onChanged: (value) {
+                            username = value;
+                          },
                         ),
                         const SizedBox(height: 15),
                         TextField(
@@ -71,6 +83,9 @@ class RegistrationPage extends StatelessWidget {
                                   const BorderSide(color: Color(0xFFFFEDCD)),
                             ),
                           ),
+                          onChanged: (value) {
+                            email = value;
+                          },
                         ),
                         const SizedBox(height: 15),
                         TextField(
@@ -82,6 +97,9 @@ class RegistrationPage extends StatelessWidget {
                                   const BorderSide(color: Color(0xFFFFEDCD)),
                             ),
                           ),
+                          onChanged: (value) {
+                            pass = value;
+                          },
                         ),
                         const SizedBox(height: 15),
                         TextField(
@@ -93,10 +111,49 @@ class RegistrationPage extends StatelessWidget {
                                   const BorderSide(color: Color(0xFFFFEDCD)),
                             ),
                           ),
+                          onChanged: (value) {
+                            confirm_pass = value;
+                          },
                         ),
                         const SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (confirm_pass == pass) {
+                              UserBank.addUser(username, email, pass);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginPage(),
+                                ),
+                              );
+                            } else {
+                              Widget okButton = TextButton(
+                                child: const Text("OK"),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              );
+
+                              // set up the AlertDialog
+                              AlertDialog alert = AlertDialog(
+                                title: const Text(
+                                    "Passwords in both fields don't match"),
+                                content: const Text(
+                                    "Re-enter passwords and make sure they match"),
+                                actions: [
+                                  okButton,
+                                ],
+                              );
+
+                              // show the dialog
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return alert;
+                                },
+                              );
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFFFEDCD),
                             shape: RoundedRectangleBorder(

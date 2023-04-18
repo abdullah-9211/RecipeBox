@@ -4,9 +4,9 @@ import 'package:recipebox/Resources/constants.dart';
 import 'package:recipebox/Views/recipe_search_results.dart';
 
 class MainPage extends StatelessWidget {
-  final String recipePage = 'Cheesus';
+  MainPage(this.userName, {super.key});
 
-  const MainPage({Key? key}) : super(key: key);
+  String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class MainPage extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(20, 0, 10, 10),
               width: double.infinity,
               child: Text(
-                'Welcome $recipePage',
+                'Welcome $userName',
                 style: const TextStyle(
                     fontSize: 25,
                     color: Colors.black,

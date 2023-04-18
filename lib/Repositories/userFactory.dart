@@ -18,6 +18,15 @@ class userBank {
     return false;
   }
 
+  String getUsername(String email) {
+    for (User u in _users) {
+      if (u.email == email) {
+        return u.username;
+      }
+    }
+    return "";
+  }
+
   void addUser(String username, String email, String pass) {
     _users.add(
       User(username, email, pass),
