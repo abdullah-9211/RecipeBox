@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipebox/Repositories/foodTypesList.dart';
 import 'package:recipebox/Resources/constants.dart';
+import 'package:recipebox/Views/recipe_search_results.dart';
 
 class MainPage extends StatelessWidget {
   final String recipePage = 'Cheesus';
@@ -142,6 +143,13 @@ Widget _itemBuilder(BuildContext context, int index) {
         ),
       ),
     ),
-    onTap: () {},
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => RecipeResults(cardContentMain[index].type),
+        ),
+      );
+    },
   );
 }
