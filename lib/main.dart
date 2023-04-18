@@ -15,7 +15,7 @@ class RecipeBox extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: RecipePage(
-        recipeBank.getRecipe(1),
+        recipeBank.getRecipe(5),
       ),
     );
   }
