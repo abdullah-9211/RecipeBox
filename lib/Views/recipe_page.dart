@@ -37,7 +37,7 @@ class _RecipePageState extends State<RecipePage> {
             padding: const EdgeInsets.fromLTRB(0.0, 16.0, 10.0, 0.0),
             child: ElevatedButton(
               onPressed: () {
-                if (Navigator.canPop(context)){
+                if (Navigator.canPop(context)) {
                   Navigator.pop(context);
                 }
               },
@@ -92,9 +92,10 @@ class _RecipePageState extends State<RecipePage> {
                     alignment: Alignment.topCenter,
                     margin: const EdgeInsets.only(top: 15),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
-                      child: widget.recipe.image,
-                    ),
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image(
+                          image: widget.recipe.image,
+                        )),
                   ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),

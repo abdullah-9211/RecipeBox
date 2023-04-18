@@ -9,7 +9,7 @@ class Recipe {
   List<String> ingredients;
   List<String> steps;
   Rating recipeRating;
-  Image image;
+  AssetImage image;
   FoodType type;
 
   Recipe(this.name, this.bywho, this.ingredients, this.steps, this.recipeRating,

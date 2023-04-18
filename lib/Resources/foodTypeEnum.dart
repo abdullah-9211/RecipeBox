@@ -33,3 +33,27 @@ String getName(FoodType type) {
 
   return 'ha';
 }
+
+FoodType getEnum(String type) {
+  if (type == 'Pancakes') {
+    return FoodType.pancakes;
+  } else if (type == 'Steaks') {
+    return FoodType.steaks;
+  } else if (type == 'Pastas') {
+    return FoodType.pasta;
+  } else if (type == 'Omelettes') {
+    return FoodType.omelette;
+  } else if (type == 'Cakes') {
+    return FoodType.cakes;
+  } else if (type == 'Neharis') {
+    return FoodType.neharis;
+  } else if (type == 'Sandwiches') {
+    return FoodType.sandwiches;
+  } else if (type == 'Burgers') {
+    return FoodType.burgers;
+  } else if (type == 'Pizzas') {
+    return FoodType.pizzas;
+  }
+
+  return FoodType.pancakes;
+}

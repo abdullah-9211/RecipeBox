@@ -20,7 +20,7 @@ class RecipeBank {
         'Cook Mixture on low heat',
       ],
       Rating(3.5, "Excellent recipe."),
-      Image.asset('images/pancakes.jpg'),
+      const AssetImage('images/pancakes.jpg'),
       FoodType.pancakes,
     ),
     Recipe(
@@ -46,7 +46,7 @@ class RecipeBank {
         'Serve with butter and maple syrup. But honestly, sometimes I just like to eat these plain. YUM, YUM, YUM.',
       ],
       Rating(4.0, "YUM YUM YUM."),
-      Image.asset('images/blueberry_pancakes.jpeg'),
+      const AssetImage('images/blueberry_pancakes.jpeg'),
       FoodType.pancakes,
     ),
     Recipe(
@@ -71,7 +71,7 @@ class RecipeBank {
         'Serve in stacks with nut butter, maple syrup and fruit.',
       ],
       Rating(3.0, "Healthy and delicious."),
-      Image.asset('images/protein_pancakes.jpg'),
+      const AssetImage('images/protein_pancakes.jpg'),
       FoodType.pancakes,
     ),
     Recipe(
@@ -103,7 +103,7 @@ class RecipeBank {
         'Sprinkle over the tarragon, if using. Bring the steaks to the table in the pan and serve drizzled with more sauce.',
       ],
       Rating(5.0, "Scrumptious"),
-      Image.asset('images/steak_1.jpg'),
+      const AssetImage('images/steak_1.jpg'),
       FoodType.steaks,
     ),
     Recipe(
@@ -127,7 +127,7 @@ class RecipeBank {
         'Serve the steak with the potatoes scattered with the coriander',
       ],
       Rating(4.5, "Amazing taste"),
-      Image.asset('images/steak_2.jpg'),
+      const AssetImage('images/steak_2.jpg'),
       FoodType.steaks,
     ),
     Recipe(
@@ -151,7 +151,7 @@ class RecipeBank {
         'If you have a digital cooking thermometer, the middle of the steak should be 50C for rare, 60C for medium and 70C for well done.',
       ],
       Rating(2.5, "Could be more flavourish"),
-      Image.asset('images/steak_3.jpg'),
+      const AssetImage('images/steak_3.jpg'),
       FoodType.steaks,
     ),
     Recipe(
@@ -198,7 +198,7 @@ class RecipeBank {
         'Chicken lasagna is ready.',
       ],
       Rating(3.0, "Cheesy and delicious"),
-      Image.asset('images/lasagna.jpeg'),
+      const AssetImage('images/lasagna.jpeg'),
       FoodType.pasta,
     ),
     Recipe(
@@ -223,7 +223,7 @@ class RecipeBank {
         'Garnish with Italian parsley, if so desired.',
       ],
       Rating(5.0, "Excellent recipe"),
-      Image.asset('images/fetuccine.jpeg'),
+      const AssetImage('images/fetuccine.jpeg'),
       FoodType.pasta,
     ),
     Recipe(
@@ -267,12 +267,22 @@ class RecipeBank {
         'Thaw overnight in the refrigerator and bring to room temperature before decorating/serving.',
       ],
       Rating(4.0, "Perfect taste for a red velvet"),
-      Image.asset('images/red_velvet_cake.jpeg'),
+      const AssetImage('images/red_velvet_cake.jpeg'),
       FoodType.cakes,
     ),
   ];
 
   Recipe getRecipe(int num) {
     return _recipes[num];
+  }
+
+  List<Recipe> getRecipes(FoodType type) {
+    List<Recipe> recipes = [];
+    for (Recipe r in _recipes) {
+      if (r.type == type) {
+        recipes.add(r);
+      }
+    }
+    return recipes;
   }
 }
