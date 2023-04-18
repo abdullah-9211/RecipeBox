@@ -12,7 +12,6 @@ class RegistrationPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
             Column(
               children: [
                 Container(
@@ -34,7 +33,10 @@ class RegistrationPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Text('Sign Up', style: subHeadingStyle,),
+                const Text(
+                  'Sign Up',
+                  style: subHeadingStyle,
+                ),
                 Container(
                   margin: const EdgeInsets.only(top: 5),
                   width: double.infinity,
@@ -49,7 +51,6 @@ class RegistrationPage extends StatelessWidget {
                   child: Container(
                     margin: const EdgeInsets.only(top: 30),
                     child: Column(
-
                       children: [
                         TextField(
                           decoration: InputDecoration(
@@ -66,7 +67,8 @@ class RegistrationPage extends StatelessWidget {
                             hintText: 'Email',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(color: Color(0xFFFFEDCD)),
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFFFEDCD)),
                             ),
                           ),
                         ),
@@ -76,7 +78,8 @@ class RegistrationPage extends StatelessWidget {
                             hintText: 'Password',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(color: Color(0xFFFFEDCD)),
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFFFEDCD)),
                             ),
                           ),
                         ),
@@ -86,7 +89,8 @@ class RegistrationPage extends StatelessWidget {
                             hintText: 'Confirm Password',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(color: Color(0xFFFFEDCD)),
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFFFEDCD)),
                             ),
                           ),
                         ),
@@ -101,7 +105,8 @@ class RegistrationPage extends StatelessWidget {
                           ),
                           child: const Text(
                             'Register',
-                            style: TextStyle(color: Colors.black87, fontFamily: bodyFont),
+                            style: TextStyle(
+                                color: Colors.black87, fontFamily: bodyFont),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -109,7 +114,8 @@ class RegistrationPage extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const LoginPage()),
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()),
                             );
                           },
                           child: const Text(
@@ -117,7 +123,6 @@ class RegistrationPage extends StatelessWidget {
                             style: TextStyle(fontFamily: bodyFont),
                           ),
                         ),
-
                       ],
                     ),
                   ),

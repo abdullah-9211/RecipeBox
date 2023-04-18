@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:recipebox/Repositories/userFactory.dart';
 import 'package:recipebox/Resources/constants.dart';
+import 'package:recipebox/Views/main_page.dart';
 import 'package:recipebox/Views/registration_page.dart';
 
+userBank UserBank = userBank();
+
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
+
+  late String email = "";
+  late String pass = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFFFEDCD),
       body: Column(
         children: [
@@ -59,9 +67,12 @@ class LoginPage extends StatelessWidget {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide:
-                                const BorderSide(color: Color(0xFFFFEDCD)),
+                                    const BorderSide(color: Color(0xFFFFEDCD)),
                               ),
                             ),
+                            onChanged: (value) {
+                              email = value;
+                            },
                           ),
                         ),
                         const SizedBox(height: 25),
@@ -71,13 +82,50 @@ class LoginPage extends StatelessWidget {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide:
-                              const BorderSide(color: Color(0xFFFFEDCD)),
+                                  const BorderSide(color: Color(0xFFFFEDCD)),
                             ),
                           ),
+                          onChanged: (value) {
+                            pass = value;
+                          },
                         ),
                         const SizedBox(height: 25),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (UserBank.findUser(email, pass)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const MainPage(),
+                                ),
+                              );
+                            } else {
+                              Widget okButton = TextButton(
+                                child: const Text("OK"),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              );
+
+                              // set up the AlertDialog
+                              AlertDialog alert = AlertDialog(
+                                title: const Text("User not found"),
+                                content: const Text(
+                                    "Re-enter details or register if no account."),
+                                actions: [
+                                  okButton,
+                                ],
+                              );
+
+                              // show the dialog
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return alert;
+                                },
+                              );
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFFFEDCD),
                             shape: RoundedRectangleBorder(
@@ -95,7 +143,9 @@ class LoginPage extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const RegistrationPage()),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const RegistrationPage()),
                             );
                           },
                           child: const Text(
