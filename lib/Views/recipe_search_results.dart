@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipebox/dummydata.dart';
+import 'package:recipebox/Resources/dummydata.dart';
 
 class RecipeResults extends StatelessWidget {
   final String recipePage = 'Pancakes';
@@ -9,30 +9,37 @@ class RecipeResults extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 70, 10, 0),
-                  width: double.infinity,
-                  child: Text(
-                    recipePage,
-                    style: const TextStyle(fontSize: 27, color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                const Divider(),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20,),
-                  width: double.infinity,
-                  child: const Text('search results',
-                      style: TextStyle(fontSize: 16, color: Colors.black),),
-                ),
-                buildRecipe(),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(20, 70, 10, 0),
+              width: double.infinity,
+              child: Text(
+                recipePage,
+                style: const TextStyle(
+                    fontSize: 27,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-        );
-    }
+            const Divider(),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              width: double.infinity,
+              child: const Text(
+                'search results',
+                style: TextStyle(fontSize: 16, color: Colors.black),
+              ),
+            ),
+            buildRecipe(),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 Widget buildRecipe() {
@@ -108,4 +115,3 @@ Widget _itemBuilder(BuildContext context, int index) {
     onTap: () {},
   );
 }
-
