@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:recipebox/Resources/constants.dart';
+
 import 'package:recipebox/Resources/mainDummyFile.dart';
 
-class RecipeResults extends StatelessWidget {
-  final String recipePage = 'Pancakes';
+class MainPage extends StatelessWidget {
+  final String recipePage = 'Cheesus';
 
-  const RecipeResults({Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,28 +14,57 @@ class RecipeResults extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
+                  margin: const EdgeInsets.only(top: 20),
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.white38,
+                    radius: 35,
+                    backgroundImage: AssetImage('images/final2.png'),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(0, 25, 20, 0),
+                    margin: const EdgeInsets.only(top: 20),
+                    alignment: Alignment.centerRight,
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.white38,
+                      radius: 30,
+                      backgroundImage: AssetImage('images/img.png'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Container(
-              padding: const EdgeInsets.fromLTRB(20, 70, 10, 0),
+              padding: const EdgeInsets.fromLTRB(20, 0, 10, 10),
               width: double.infinity,
               child: Text(
-                recipePage,
-                style: const TextStyle(
-                    fontSize: 27,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                'Welcome $recipePage',
+                style: const TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold, fontFamily: bodyFont),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20,),
+              width: double.infinity,
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  prefixIcon: const Icon(Icons.search, color: Colors.black54,),
+                ),
               ),
             ),
             const Divider(),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              width: double.infinity,
-              child: const Text(
-                'search results',
-                style: TextStyle(fontSize: 16, color: Colors.black),
-              ),
-            ),
             buildRecipe(),
           ],
         ),
@@ -68,7 +99,7 @@ Widget _itemBuilder(BuildContext context, int index) {
           width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: cardContent[index].cardImage,
+              image: cardContentMain[index].cardImage,
               fit: BoxFit.cover,
             ),
             borderRadius: BorderRadius.circular(8.0),
@@ -86,7 +117,7 @@ Widget _itemBuilder(BuildContext context, int index) {
               TextSpan(
                 children: [
                   TextSpan(
-                    text: cardContent[index].title,
+                    text: cardContentMain[index].type,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,

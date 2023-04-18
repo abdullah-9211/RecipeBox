@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipebox/Views/main_page.dart';
 import 'package:recipebox/Views/recipe_search_results.dart';
 
 import 'Repositories/recipeFactory.dart';
@@ -13,7 +14,7 @@ class RecipeBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: RecipeResults(),
+      home: MainPage(),
     );
   }
 }
