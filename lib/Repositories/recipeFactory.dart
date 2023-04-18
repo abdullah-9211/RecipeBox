@@ -1,6 +1,6 @@
-import 'package:recipebox/Rating.dart';
+import 'package:recipebox/Models/Rating.dart';
 
-import 'recipe.dart';
+import '../Models/recipe.dart';
 
 class RecipeBank {
   final List<Recipe> _recipes = [
