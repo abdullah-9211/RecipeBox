@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:recipebox/Models/recipe.dart';
+import 'package:recipebox/Views/recipe_feedback.dart';
 
 import '../Controllers/recipe_page_controller.dart';
 import '../Resources/constants.dart';
@@ -125,10 +126,18 @@ class _RecipePageState extends State<RecipePage> {
                               icon: const Icon(Icons.share)),
                         ),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      FeedbackPage(recipe: widget.recipe),
+                                ),
+                              );
+                            },
                             iconSize: 30,
                             color: const Color(0xCC000000),
-                            icon: const Icon(Icons.check_box_outlined)),
+                            icon: const Icon(Icons.star_rounded)),
                       ],
                     ),
                   ),

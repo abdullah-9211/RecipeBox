@@ -12,7 +12,7 @@ class FeedbackPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFFFEDCD),
       body: Center(
-          child: Container(
+          child: SizedBox(
               width: 370,
               height: 770,
               child: Column(
@@ -41,10 +41,15 @@ class FeedbackPage extends StatelessWidget {
                                     padding: const EdgeInsets.only(
                                         left: 50.0), // add left padding
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        if (Navigator.canPop(context)) {
+                                          Navigator.pop(context);
+                                        }
+                                      },
                                       style: ElevatedButton.styleFrom(
                                         shape: const CircleBorder(),
-                                        backgroundColor: Color(0xFFE6B980),
+                                        backgroundColor:
+                                            const Color(0xFFE6B980),
                                         elevation: 0.0,
                                       ),
                                       child: const Icon(Icons.close,
@@ -136,6 +141,7 @@ class FeedbackPage extends StatelessWidget {
                                   ),
                                   onRatingUpdate: (rating) {
                                     //Update recipe rating in db
+                                    recipe.recipeRating.ratingNum = rating;
                                   },
                                 ),
                               ),
@@ -163,7 +169,9 @@ class FeedbackPage extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     left: 110.0, top: 10.0), // add left padding
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
                                   style: TextButton.styleFrom(
                                     backgroundColor: const Color(0xFFE6B980),
                                     fixedSize: const Size(150, 50),
