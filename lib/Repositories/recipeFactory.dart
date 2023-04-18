@@ -227,7 +227,7 @@ class RecipeBank {
       FoodType.pasta,
     ),
     Recipe(
-      'Red Velvelt Cake',
+      'Red Velvet Cake',
       'Sally McKenney',
       [
         '3 cups (360g) cake flour (spooned & leveled)',
@@ -274,6 +274,15 @@ class RecipeBank {
 
   Recipe getRecipe(int num) {
     return _recipes[num];
+  }
+
+  Recipe getRecipebyName(String name) {
+    for (Recipe r in _recipes) {
+      if (name == r.name) {
+        return r;
+      }
+    }
+    return _recipes[0];
   }
 
   List<Recipe> getRecipes(FoodType type) {

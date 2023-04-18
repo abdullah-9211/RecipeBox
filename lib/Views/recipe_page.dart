@@ -23,6 +23,7 @@ class _RecipePageState extends State<RecipePage> {
     return Scaffold(
       backgroundColor: const Color(0xFFFFEDCD),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.only(top: headingPadding),
           child: Text(

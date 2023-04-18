@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipebox/Repositories/recipeFactory.dart';
 import 'package:recipebox/Resources/foodTypeEnum.dart';
+import 'package:recipebox/Views/recipe_page.dart';
 
 RecipeBank recipeBank = RecipeBank();
 
@@ -137,7 +138,17 @@ class RecipeResults extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RecipePage(
+              recipeBank.getRecipebyName(
+                  recipeBank.getRecipes(getEnum(recipePageName))[index].name),
+            ),
+          ),
+        );
+      },
     );
   }
 }
