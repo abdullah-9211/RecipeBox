@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipebox/Repositories/foodTypesList.dart';
 import 'package:recipebox/Resources/constants.dart';
-
-import 'package:recipebox/Resources/mainDummyFile.dart';
 
 class MainPage extends StatelessWidget {
   final String recipePage = 'Cheesus';
@@ -45,11 +44,17 @@ class MainPage extends StatelessWidget {
               width: double.infinity,
               child: Text(
                 'Welcome $recipePage',
-                style: const TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold, fontFamily: bodyFont),
+                style: const TextStyle(
+                    fontSize: 25,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: bodyFont),
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20,),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
               width: double.infinity,
               child: TextField(
                 decoration: InputDecoration(
@@ -60,7 +65,10 @@ class MainPage extends StatelessWidget {
                   ),
                   filled: true,
                   fillColor: Colors.grey.shade200,
-                  prefixIcon: const Icon(Icons.search, color: Colors.black54,),
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: Colors.black54,
+                  ),
                 ),
               ),
             ),
@@ -81,7 +89,7 @@ Widget buildRecipe() {
       childAspectRatio: 0.9,
     ),
     itemBuilder: _itemBuilder,
-    itemCount: cardContent.length,
+    itemCount: cardContentMain.length,
     physics: const NeverScrollableScrollPhysics(),
   );
 }
@@ -126,15 +134,6 @@ Widget _itemBuilder(BuildContext context, int index) {
                     ),
                   ),
                   const TextSpan(text: '\n'),
-                  TextSpan(
-                    text: cardContent[index].cook,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: Colors.white70,
-                      fontSize: 12.0,
-                      wordSpacing: 1.5,
-                    ),
-                  ),
                 ],
               ),
               textAlign: TextAlign.center,

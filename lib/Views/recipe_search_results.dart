@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recipebox/Resources/mainDummyFile.dart';
 import 'package:recipebox/Repositories/recipeFactory.dart';
 import 'package:recipebox/Resources/foodTypeEnum.dart';
 import 'package:recipebox/Views/recipe_page.dart';

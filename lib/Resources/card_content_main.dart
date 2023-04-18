@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardContentMain {
-  NetworkImage cardImage;
+  AssetImage cardImage;
   String type;
 
   CardContentMain(this.type, this.cardImage);
