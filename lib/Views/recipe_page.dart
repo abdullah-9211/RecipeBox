@@ -36,7 +36,11 @@ class _RecipePageState extends State<RecipePage> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 16.0, 10.0, 0.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (Navigator.canPop(context)){
+                  Navigator.pop(context);
+                }
+              },
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 backgroundColor: mainColor,
