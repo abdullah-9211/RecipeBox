@@ -67,7 +67,7 @@ class _RecipePageState extends State<RecipePage> {
                       ),
                     ),
                     RatingBar.builder(
-                      initialRating: 3,
+                      initialRating: widget.recipe.recipeRating.ratingNum,
                       minRating: 1,
                       itemSize: 23.0,
                       direction: Axis.horizontal,

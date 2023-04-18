@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'recipe_feedback.dart';
-import 'package:recipebox/Views/recipe_search_results.dart';
+
 import 'Repositories/recipeFactory.dart';
+import 'Views/recipe_page.dart';
 
 RecipeBank recipeBank = RecipeBank();
 
@@ -12,12 +12,11 @@ class RecipeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FeedbackPage(
-        recipeName: "Sweet Pankcakes",
-        recipeOwner: "Cheesus",
-        rating: 4.5,),
+      home: RecipePage(
+        recipeBank.getRecipe(1),
+      ),
     );
   }
 }
