@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:recipebox/recipe_search_results.dart';
 import 'Repositories/recipeFactory.dart';
 import 'Views/recipe_page.dart';
 
@@ -12,8 +12,8 @@ class RecipeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: RecipePage(recipeBank.getRecipe(0)),
+    return const MaterialApp(
+      home: RecipeResults(),
     );
   }
 }
