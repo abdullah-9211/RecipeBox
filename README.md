@@ -1,16 +1,12 @@
-# recipebox
+# Recipebox
 
-A new Flutter project.
+Recipe App built on Flutter
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter used to create interface for our app.
+- Recipe App allows users to search through variety of recipes added to app.
+- Recipes divided into categories like steaks, pancakes, pizzas etc.
+- Users can leave review on app and save them as well.
+- Users have their own accounts with unique username and password.
+- Database is not connected and data is hosted locally.
